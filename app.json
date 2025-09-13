@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Scan Genie",
-    "slug": "scan-genie",
+    "name": "amd-day-01",
+    "slug": "amd-day-01",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -17,7 +17,14 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.dilsara_thiranjaya.scangenie"
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.ACCESS_MEDIA_LOCATION"
+      ],
+      "package": "com.dilsara_thiranjaya.amdday01"
     },
     "web": {
       "bundler": "metro",
@@ -34,6 +41,28 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
+          "recordAudioAndroid": true
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Allow $(PRODUCT_NAME) to access your photos.",
+          "savePhotosPermission": "Allow $(PRODUCT_NAME) to save photos.",
+          "isAccessMediaLocationEnabled": true
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
       ]
     ],
     "experiments": {
@@ -42,7 +71,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "35eb4488-5060-4f18-883e-c025237041c7"
+        "projectId": "11d0527b-c23e-4834-a829-cfb7c430aa6f"
       }
     }
   }

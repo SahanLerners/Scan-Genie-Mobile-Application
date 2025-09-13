@@ -31,7 +31,7 @@ extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
 }
 expoAutolinking.useExpoModules()
 
-rootProject.name = 'Scan Genie'
+rootProject.name = 'amd-day-01'
 
 expoAutolinking.useExpoVersionCatalog()
 

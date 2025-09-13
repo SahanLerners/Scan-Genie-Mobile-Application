@@ -89,7 +89,7 @@ android {
 
     namespace 'com.dilsara_thiranjaya.scangenie'
     defaultConfig {
-        applicationId 'com.dilsara_thiranjaya.scangenie'
+        applicationId 'com.dilsara_thiranjaya.amdday01'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
