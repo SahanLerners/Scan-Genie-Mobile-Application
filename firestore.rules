@@ -1,0 +1,66 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users can only access their own data
+    function isOwner(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Validate user data structure
+    function isValidUserData() {
+      return request.auth != null && 
+             request.auth.uid != null &&
+             request.auth.token.email_verified == true;
+    }
+    
+    // User favorites collection
+    match /favorites/{favoriteId} {
+      allow read, write: if isOwner(resource.data.userId);
+      allow create: if isOwner(request.resource.data.userId) && 
+                       isValidUserData() &&
+                       request.resource.data.keys().hasAll(['userId', 'product', 'addedAt']) &&
+                       request.resource.data.userId is string &&
+                       request.resource.data.product is map &&
+                       request.resource.data.addedAt is timestamp;
+    }
+    
+    // User scan history collection
+    match /scans/{scanId} {
+      allow read, write: if isOwner(resource.data.userId);
+      allow create: if isOwner(request.resource.data.userId) && 
+                       isValidUserData() &&
+                       request.resource.data.keys().hasAll(['userId', 'product', 'scannedAt']) &&
+                       request.resource.data.userId is string &&
+                       request.resource.data.product is map &&
+                       request.resource.data.scannedAt is timestamp;
+    }
+    
+    // User profiles (optional - for storing user preferences)
+    match /users/{userId} {
+      allow read, write: if isOwner(userId) && isValidUserData();
+      allow create: if isOwner(userId) && 
+                       isValidUserData() &&
+                       request.resource.data.keys().hasAll(['email', 'createdAt']) &&
+                       request.resource.data.email == request.auth.token.email;
+    }
+    
+    // Analytics aggregation (read-only for users, write for cloud functions)
+    match /analytics/{userId} {
+      allow read: if isOwner(userId);
+      // Only cloud functions can write analytics
+      allow write: if false;
+    }
+    
+    // Public product database (read-only)
+    match /products/{productId} {
+      allow read: if request.auth != null;
+      allow write: if false; // Only admins can modify products
+    }
+    
+    // Deny all other access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
