@@ -1,6 +1,6 @@
-# AI Shopping Assistant - React Native Expo App
+# Scan Genie - AI Shopping Assistant
 
-A modern AI-powered shopping assistant built with React Native and Expo that helps users make healthier food choices through barcode scanning, product analysis, and personalized recommendations.
+Scan Genie is a modern AI-powered shopping assistant built with React Native and Expo that helps users make healthier food choices through barcode scanning, product analysis, and personalized recommendations.
 
 ## ✨ Features
 

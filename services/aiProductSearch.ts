@@ -1,8 +1,9 @@
 import axios from 'axios';
+import Constants from 'expo-constants';
 import { AIProductIdentification, AIAlternative, Product } from '@/types';
 
 // Free Google Gemini API configuration - Get your key from https://makersuite.google.com/app/apikey
-const GEMINI_API_KEY = process.env.EXPO_PUBLIC_GEMINI_API_KEY || 'AIzaSyARDQqqBL4zU1tE_ixrjluuK2sxlk6urL4';
+const GEMINI_API_KEY = process.env.EXPO_PUBLIC_GEMINI_API_KEY || Constants.expoConfig?.extra?.geminiApiKey || 'AIzaSyARDQqqBL4zU1tE_ixrjluuK2sxlk6urL4';
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent';
 
 // Rate limiting to respect free tier limits (60 requests/minute)
