@@ -136,11 +136,15 @@ export default function Home() {
       const identification = await AIProductSearchService.identifyProductFromImage(imageUri);
       
       if (identification && identification.product_name) {
+        console.log('AI Identification:', identification);
+        
         // Search Open Food Facts for the identified product
         const products = await OpenFoodFactsService.searchProductsByName(
           identification.product_name,
           identification.category
         );
+
+        console.log('Found products:', products);
 
         let finalProduct;
         if (products.length > 0) {

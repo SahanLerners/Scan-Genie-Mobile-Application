@@ -10,8 +10,7 @@ service cloud.firestore {
     // Validate user data structure
     function isValidUserData() {
       return request.auth != null && 
-             request.auth.uid != null &&
-             request.auth.token.email_verified == true;
+             request.auth.uid != null;
     }
     
     // User favorites collection

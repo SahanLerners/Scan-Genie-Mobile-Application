@@ -81,7 +81,13 @@ export const AIProductSearchService = {
       }
 
       // Parse JSON response
-      const cleanResponse = aiResponse.replace(/```json\n?|\n?```/g, '').trim();
+      const cleanResponse = aiResponse
+        .replace(/```json\n?/g, '')
+        .replace(/\n?```/g, '')
+        .replace(/```/g, '')
+        .trim();
+      
+      console.log('AI Response:', cleanResponse);
       const identification = JSON.parse(cleanResponse);
 
       if (identification.confidence < 0.5) {
