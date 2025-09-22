@@ -1,0 +1,88 @@
+{
+  "expo": {
+    "name": "Scan Genie",
+    "slug": "scan-genie",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "scangenie",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "jsEngine": "hermes",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.ACCESS_MEDIA_LOCATION",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE"
+      ],
+      "package": "com.dilsara_thiranjaya.scangenie"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/icon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff"
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Scan Genie to access your camera to scan product barcodes",
+          "microphonePermission": "Allow Scan Genie to access your microphone for video recording",
+          "recordAudioAndroid": true
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Allow Scan Genie to access your photos to analyze product images.",
+          "savePhotosPermission": "Allow Scan Genie to save product photos to your gallery.",
+          "isAccessMediaLocationEnabled": true
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Scan Genie needs access to your photos to identify products using AI analysis."
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "firebaseApiKey": "AIzaSyCYTFLFDrG5XVJTZ3Df-T7GMs-2cvKeCNY",
+      "firebaseAuthDomain": "scan-genie-app.firebaseapp.com",
+      "firebaseProjectId": "scan-genie-app",
+      "firebaseStorageBucket": "scan-genie-app.firebasestorage.app",
+      "firebaseMessagingSenderId": "802460040576",
+      "firebaseAppId": "1:802460040576:web:fc2747a74b79e98ed71565",
+      "geminiApiKey": "AIzaSyARDQqqBL4zU1tE_ixrjluuK2sxlk6urL4",
+      "eas": {
+        "projectId": "c6547e73-7db0-4542-a15d-c22dc954946b"
+      }
+    }
+  }
+}
